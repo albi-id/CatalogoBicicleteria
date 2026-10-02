@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rodados del Puerto · Motos, repuestos y accesorios en Barranqueras</title>
+<meta name="description" content="Motos 0 km, cascos, indumentaria, repuestos y accesorios en Barranqueras, Chaco. Consultá precio y stock por WhatsApp.">
+<meta name="theme-color" content="#0E5C63">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --asfalto: #1C2228;
+    --hormigon: #E9ECEF;
+    --blanco: #FFFFFF;
+    --petroleo: #0E5C63;
+    --petroleo-osc: #0A464C;
+    --amarillo: #F2C230;
+    --gris: #5B6670;
+    --borde: #D3D8DD;
+    --verde-wa: #1FA855;
+    --display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+    --texto: "Barlow", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: var(--texto);
+    color: var(--asfalto);
+    background: var(--hormigon);
+    line-height: 1.5;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amarillo); outline-offset: 2px; border-radius: 4px; }
+  .contenedor { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Encabezado ---------- */
+  .encabezado {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--borde);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .encabezado .contenedor { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .marca { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: .01em; text-decoration: none; line-height: 1; }
+  .marca span { display: block; font-family: var(--texto); font-weight: 500; font-size: .75rem; color: var(--gris); letter-spacing: 0; margin-top: 2px; }
+  .nav { display: flex; gap: 28px; align-items: center; }
+  .nav a { text-decoration: none; font-weight: 600; font-size: .95rem; }
+  .nav a:hover { color: var(--petroleo); }
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--texto); font-weight: 600; font-size: 1rem;
+    padding: 12px 20px; border-radius: 8px; border: 2px solid transparent;
+    text-decoration: none; cursor: pointer; transition: background .15s, color .15s;
+  }
+  .boton-chico { padding: 8px 14px; font-size: .9rem; }
+  .boton-wa { background: var(--verde-wa); color: var(--blanco); }
+  .boton-wa:hover { background: #178a45; }
+  .boton-amarillo { background: var(--amarillo); color: var(--asfalto); }
+  .boton-amarillo:hover { background: #e3b11c; }
+  .boton-linea { border-color: currentColor; color: var(--blanco); background: transparent; }
+  .boton-linea:hover { background: rgba(255,255,255,.12); }
+  .boton svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ---------- Portada ---------- */
+  .portada { background: var(--petroleo); color: var(--blanco); overflow: hidden; }
+  .portada .contenedor { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 32px; padding-top: 64px; padding-bottom: 64px; }
+  .portada h1 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(3rem, 8.5vw, 6.2rem); line-height: .9; letter-spacing: -.01em;
+  }
+  .portada p { font-size: 1.15rem; max-width: 34ch; margin: 20px 0 28px; color: #D7E8E9; }
+  .portada .acciones { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ilustracion { width: 100%; max-width: 520px; justify-self: end; color: var(--blanco); }
+  .ilustracion .moto { animation: entrar 1s cubic-bezier(.2,.8,.2,1) both .15s; }
+  .ilustracion .velocidad { animation: lineas 1s ease-out both .15s; }
+  @keyframes entrar { from { transform: translateX(-120px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes lineas { from { opacity: 0; transform: translateX(40px); } to { opacity: .55; transform: none; } }
+
+  .datos { background: var(--blanco); border-bottom: 1px solid var(--borde); }
+  .datos .contenedor { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .dato { display: flex; gap: 12px; align-items: flex-start; padding: 20px 16px 20px 0; }
+  .dato + .dato { border-left: 1px solid var(--borde); padding-left: 20px; }
+  .dato svg { width: 24px; height: 24px; color: var(--petroleo); flex-shrink: 0; margin-top: 2px; }
+  .dato strong { display: block; font-size: .95rem; }
+  .dato small { color: var(--gris); font-size: .9rem; }
+
+  /* ---------- Catálogo ---------- */
+  .seccion { padding: 56px 0; }
+  .titulo { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1; }
+  .bajada { color: var(--gris); margin-top: 8px; max-width: 60ch; }
+  .controles { display: flex; flex-direction: column; gap: 14px; margin: 28px 0 24px; }
+  .buscador { position: relative; max-width: 420px; }
+  .buscador svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--gris); }
+  .buscador input {
+    width: 100%; font: inherit; font-size: 1rem; padding: 12px 14px 12px 42px;
+    border: 1px solid var(--borde); border-radius: 8px; background: var(--blanco); color: var(--asfalto);
+  }
+  .buscador input:focus { outline: none; border-color: var(--petroleo); box-shadow: 0 0 0 3px rgba(14,92,99,.2); }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0; font: inherit; font-weight: 600; font-size: .92rem;
+    padding: 8px 16px; border-radius: 999px; cursor: pointer;
+    background: var(--blanco); border: 1px solid var(--borde); color: var(--asfalto);
+  }
+  .chip[aria-pressed="true"] { background: var(--asfalto); border-color: var(--asfalto); color: var(--blanco); }
+
+  .grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .producto {
+    background: var(--blanco); border: 1px solid var(--borde); border-radius: 12px;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .foto { position: relative; aspect-ratio: 4 / 3; background: var(--hormigon); display: grid; place-items: center; color: var(--petroleo); }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  .foto svg { width: 46%; height: auto; opacity: .85; }
+  .etiqueta {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--asfalto); color: var(--blanco);
+    font-size: .78rem; font-weight: 600; padding: 4px 9px; border-radius: 4px;
+  }
+  .etiqueta.oferta { background: #C8361D; }
+  .info { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .info h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.3; }
+  .info .detalle { color: var(--gris); font-size: .9rem; }
+  .precio-fila { margin-top: auto; padding-top: 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  /* El precio como la tarjetita colgante de un mostrador */
+  .precio {
+    position: relative; display: inline-block;
+    font-family: var(--display); font-weight: 800; font-size: 1.55rem; line-height: 1;
+    background: var(--amarillo); color: var(--asfalto);
+    padding: 7px 14px 7px 24px;
+    clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+  }
+  .precio::before {
+    content: ""; position: absolute; left: 11px; top: 50%; width: 6px; height: 6px;
+    background: var(--blanco); border-radius: 50%; transform: translateY(-50%);
+  }
+  .precio-anterior { font-size: .85rem; color: var(--gris); text-decoration: line-through; }
+  .cuotas { font-size: .88rem; color: var(--petroleo); font-weight: 600; }
+  .producto .boton { margin-top: 12px; width: 100%; }
+
+  .vacio { grid-column: 1 / -1; background: var(--blanco); border: 1px dashed var(--borde); border-radius: 12px; padding: 40px 24px; text-align: center; }
+  .vacio p { margin-bottom: 16px; color: var(--gris); }
+  .vacio .boton { background: var(--asfalto); color: var(--blanco); }
+
+  /* ---------- Cómo comprar ---------- */
+  .pasos-fondo { background: var(--blanco); border-top: 1px solid var(--borde); border-bottom: 1px solid var(--borde); }
+  .pasos { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 32px; counter-reset: paso; }
+  .pasos li { counter-increment: paso; }
+  .pasos li::before {
+    content: counter(paso); display: grid; place-items: center;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--amarillo); font-family: var(--display); font-weight: 800; font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+  .pasos h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .pasos p { color: var(--gris); max-width: 36ch; }
+
+  /* ---------- Contacto ---------- */
+  .contacto { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .lista-contacto { list-style: none; display: grid; gap: 18px; margin-top: 24px; }
+  .lista-contacto li { display: flex; gap: 12px; }
+  .lista-contacto svg { width: 22px; height: 22px; color: var(--petroleo); flex-shrink: 0; margin-top: 2px; }
+  .lista-contacto strong { display: block; }
+  .lista-contacto span, .lista-contacto a { color: var(--gris); }
+  .tarjeta-pago { background: var(--petroleo); color: var(--blanco); border-radius: 12px; padding: 28px; }
+  .tarjeta-pago h3 { font-family: var(--display); font-weight: 800; font-size: 1.8rem; line-height: 1; margin-bottom: 14px; }
+  .tarjeta-pago ul { list-style: none; display: grid; gap: 10px; margin-bottom: 22px; }
+  .tarjeta-pago li { padding-left: 22px; position: relative; color: #D7E8E9; }
+  .tarjeta-pago li::before { content: ""; position: absolute; left: 0; top: .55em; width: 10px; height: 10px; background: var(--amarillo); border-radius: 2px; }
+  .tarjeta-pago .acciones { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  /* ---------- Pie ---------- */
+  .pie { background: var(--asfalto); color: #AEB7BF; font-size: .9rem; padding: 28px 0 96px; }
+  .pie .contenedor { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  .pie a { color: var(--blanco); }
+
+  /* ---------- Botón flotante ---------- */
+  .flotante {
+    position: fixed; z-index: 30;
+    right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    background: var(--verde-wa); color: var(--blanco);
+    border-radius: 999px; padding: 14px 20px 14px 16px;
+    display: flex; align-items: center; gap: 8px;
+    font-weight: 600; text-decoration: none;
+    box-shadow: 0 6px 20px rgba(28,34,40,.28);
+  }
+  .flotante svg { width: 24px; height: 24px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .portada .contenedor { grid-template-columns: 1fr; padding-top: 40px; padding-bottom: 40px; }
+    .ilustracion { justify-self: start; max-width: 380px; order: -1; margin-bottom: -8px; }
+    .datos .contenedor { grid-template-columns: 1fr; }
+    .dato { padding: 14px 0; }
+    .dato + .dato { border-left: 0; border-top: 1px solid var(--borde); padding-left: 0; }
+    .pasos { grid-template-columns: 1fr; gap: 24px; }
+    .contacto { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .nav a:not(.boton) { display: none; }
+    .seccion { padding: 40px 0; }
+    .contenedor { padding: 0 16px; }
+    .grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .info { padding: 12px; }
+    .info h3 { font-size: .95rem; }
+    .info .detalle { font-size: .82rem; }
+    .precio { font-size: 1.25rem; padding: 6px 10px 6px 21px; }
+    .cuotas { font-size: .8rem; }
+    .producto .boton { font-size: .85rem; padding: 10px 8px; }
+    .producto .boton svg { display: none; }
+    .flotante span { display: none; }
+    .flotante { padding: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ilustracion .moto, .ilustracion .velocidad { animation: none; }
+    .ilustracion .velocidad { opacity: .55; }
+  }
+</style>
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="contenedor">
+    <a href="#inicio" class="marca" id="marca">Rodados del Puerto<span>Barranqueras, Chaco</span></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#como-comprar">Cómo comprar</a>
+      <a href="#contacto">Contacto</a>
+      <a class="boton boton-wa boton-chico" data-wa="Hola! Quería hacer una consulta." href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+        Escribinos
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="contenedor">
+      <div>
+        <h1 id="titulo-portada">Rodados del Puerto</h1>
+        <p id="bajada-portada">Motos 0 km, repuestos y accesorios en Barranqueras. Mirá los precios acá y consultá stock por WhatsApp.</p>
+        <div class="acciones">
+          <a href="#catalogo" class="boton boton-amarillo">Ver catálogo</a>
+          <a href="#" class="boton boton-linea" data-wa="Hola! Vi la web y quería consultar por una moto.">Consultar por WhatsApp</a>
+        </div>
+      </div>
+      <svg class="ilustracion" viewBox="0 0 520 300" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <g class="velocidad" stroke-width="6">
+          <line x1="10" y1="120" x2="90" y2="120"/>
+          <line x1="30" y1="160" x2="110" y2="160"/>
+          <line x1="0" y1="200" x2="70" y2="200"/>
+        </g>
+        <g class="moto">
+          <circle cx="190" cy="215" r="58" stroke-width="12"/>
+          <circle cx="190" cy="215" r="14" stroke-width="8"/>
+          <circle cx="420" cy="215" r="58" stroke-width="12"/>
+          <circle cx="420" cy="215" r="14" stroke-width="8"/>
+          <path d="M190 215 L255 140 H350 L420 215" stroke-width="12"/>
+          <path d="M255 140 L290 215 H360 L350 140" stroke-width="10"/>
+          <path d="M350 140 L385 85 H418" stroke-width="12"/>
+          <path d="M228 128 H300" stroke-width="16"/>
+          <path d="M300 118 Q330 100 352 122" stroke-width="12"/>
+          <path d="M160 160 L215 160" stroke-width="10"/>
+          <line x1="20" y1="282" x2="510" y2="282" stroke-width="4" stroke-dasharray="30 22"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="datos" aria-label="Datos del local">
+    <div class="contenedor">
+      <div class="dato">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <div><strong id="dato-direccion">Av. Ejemplo 1234</strong><small>Barranqueras, Chaco</small></div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><strong id="dato-horario">Lun a vie 8 a 12:30 y 16:30 a 20:30</strong><small id="dato-horario2">Sábados 8:30 a 13</small></div>
+      </div>
+      <div class="dato">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6.5 15h4"/></svg>
+        <div><strong>Hasta 12 cuotas</strong><small>Tarjetas, transferencia y efectivo</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="catalogo">
+    <div class="contenedor">
+      <h2 class="titulo">Catálogo</h2>
+      <p class="bajada">Precios de contado. Tocá “Consultar” y te respondemos por WhatsApp con stock y colores disponibles.</p>
+
+      <div class="controles">
+        <label class="buscador">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input type="search" id="buscar" placeholder="Buscar: casco, 150cc, batería…" aria-label="Buscar productos">
+        </label>
+        <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      </div>
+
+      <div class="grilla" id="grilla" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="seccion pasos-fondo" id="como-comprar">
+    <div class="contenedor">
+      <h2 class="titulo">Cómo comprar</h2>
+      <ol class="pasos">
+        <li><h3>Elegí en el catálogo</h3><p>Mirá precios y filtrá por motos, cascos, repuestos o accesorios.</p></li>
+        <li><h3>Consultá por WhatsApp</h3><p>El mensaje sale con el producto ya escrito. Te confirmamos stock y forma de pago.</p></li>
+        <li><h3>Retirá o recibilo</h3><p>Pasá por el local o coordinamos el envío en Barranqueras y Resistencia.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion" id="contacto">
+    <div class="contenedor contacto">
+      <div>
+        <h2 class="titulo">Dónde estamos</h2>
+        <ul class="lista-contacto">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <div><strong id="contacto-direccion">Av. Ejemplo 1234</strong><span>Barranqueras, Chaco</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+            <div><strong>WhatsApp</strong><a href="#" data-wa="Hola! Quería hacer una consulta." id="contacto-telefono">362 400-0000</a></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+            <div><strong>Instagram</strong><a href="#" id="contacto-instagram" target="_blank" rel="noopener">@rodadosdelpuerto</a></div>
+          </li>
+        </ul>
+      </div>
+      <div class="tarjeta-pago">
+        <h3>Formas de pago</h3>
+        <ul>
+          <li>Efectivo y transferencia, con precio de contado</li>
+          <li>Tarjetas de crédito, hasta 12 cuotas</li>
+          <li>Financiación con DNI para motos 0 km (consultá requisitos)</li>
+        </ul>
+        <div class="acciones">
+          <a href="#" class="boton boton-amarillo" id="como-llegar" target="_blank" rel="noopener">Cómo llegar</a>
+          <a href="#" class="boton boton-linea" data-wa="Hola! Quería consultar por financiación.">Consultar financiación</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <span>© <span id="anio"></span> Rodados del Puerto. Precios sujetos a cambio sin previo aviso.</span>
+  <!--  <span>Web hecha por <a href="#" id="credito" target="_blank" rel="noopener">Encinas Maria del Alba</a></span> -->
+  </div>
+</footer>
+
+<a href="#" class="flotante" data-wa="Hola! Vi la web y quería hacer una consulta." aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+/* =====================================================
+   CONFIGURACIÓN — cambiá estos datos para cada negocio
+   ===================================================== */
+const NEGOCIO = {
+  nombre: "Rodados del Puerto",
+  whatsapp: "3624000000",          // 549 + código de área sin 0 + número sin 15
+  telefonoVisible: "362 400-0000",
+  direccion: "Av. Ejemplo 1234",
+  horario: "Lun a vie 8 a 12:30 y 16:30 a 20:30",
+  horario2: "Sábados 8:30 a 13",
+  instagram: "https://instagram.com/",
+  instagramVisible: "@rodadosdelpuerto",
+  mapa: "https://maps.google.com/?q=Barranqueras,Chaco",
+  credito: "https://wa.me/5493624006455" // mi link (WhatsApp o portfolio)
+};
+
+/* Productos. "foto" puede ser una URL o una ruta como "fotos/moto1.jpg".
+   Si queda vacía se muestra un ícono de la categoría.
+   "etiqueta": texto opcional ("0 km", "Oferta", "Nuevo"…).
+   "antes": precio anterior opcional (se muestra tachado). */
+const PRODUCTOS = [
+  { nombre: "Moto urbana 110cc", categoria: "Motos", detalle: "4 tiempos, arranque eléctrico, ideal para ciudad", precio: 2390000, cuotas: 12, etiqueta: "0 km", foto: "" },
+  { nombre: "Moto street 150cc", categoria: "Motos", detalle: "Freno a disco delantero, tablero digital", precio: 3450000, cuotas: 12, etiqueta: "0 km", foto: "" },
+  { nombre: "Scooter 125cc", categoria: "Motos", detalle: "Automática, baúl bajo asiento", precio: 2950000, cuotas: 12, etiqueta: "0 km", foto: "" },
+  { nombre: "Enduro 250cc", categoria: "Motos", detalle: "Suspensión de largo recorrido, para calle y tierra", precio: 5890000, cuotas: 12, etiqueta: "0 km", foto: "" },
+  { nombre: "Casco integral con visor", categoria: "Cascos", detalle: "Talles S a XL, certificado", precio: 189000, antes: 215000, cuotas: 6, etiqueta: "Oferta", foto: "" },
+  { nombre: "Casco abierto rebatible", categoria: "Cascos", detalle: "Visor transparente, varios colores", precio: 98000, cuotas: 3, foto: "" },
+  { nombre: "Campera de cordura con protecciones", categoria: "Indumentaria", detalle: "Protecciones en hombros y codos", precio: 145000, cuotas: 6, foto: "" },
+  { nombre: "Guantes de verano", categoria: "Indumentaria", detalle: "Tela respirable, nudillos reforzados", precio: 32000, foto: "" },
+  { nombre: "Kit de transmisión 110cc", categoria: "Repuestos", detalle: "Corona, piñón y cadena", precio: 68000, foto: "" },
+  { nombre: "Batería 12V 5Ah", categoria: "Repuestos", detalle: "Libre de mantenimiento", precio: 54000, foto: "" },
+  { nombre: "Cubierta trasera 90/90-18", categoria: "Repuestos", detalle: "Uso mixto, buena tracción en lluvia", precio: 72000, foto: "" },
+  { nombre: "Aceite 4T 20W50 x 1 L", categoria: "Repuestos", detalle: "Mineral, para motos de baja cilindrada", precio: 14500, foto: "" },
+  { nombre: "Candado de disco con alarma", categoria: "Accesorios", detalle: "Alarma de 110 dB", precio: 28000, foto: "" },
+  { nombre: "Baúl trasero 30 L", categoria: "Accesorios", detalle: "Entra un casco integral, incluye base", precio: 59000, cuotas: 3, foto: "" }
+];
+
+/* =====================================================
+   De acá para abajo no hace falta tocar nada
+   ===================================================== */
+const ICONOS = {
+  Motos: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="28" r="9"/><circle cx="50" cy="28" r="9"/><path d="M14 28 L24 16 H40 L50 28"/><path d="M24 16 L30 28 H42 L40 16"/><path d="M40 16 L45 8 H51"/><path d="M20 13 H31"/></svg>',
+  Cascos: '<svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 34 C8 17 19 6 33 6 C47 6 56 17 56 31 V38 H30 C25 38 22 35 22 30 V28 H8 Z"/><path d="M33 18 H55"/><path d="M8 34 V40 H22"/></svg>',
+  Indumentaria: '<svg viewBox="0 0 64 56" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 L32 12 L40 6 L54 12 L60 36 L52 38 L48 24 V50 H16 V24 L12 38 L4 36 L10 12 Z"/><path d="M32 12 V50"/></svg>',
+  Repuestos: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="9"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.7 5.7M44.7 44.7l5.7 5.7M13.6 50.4l5.7-5.7M44.7 19.3l5.7-5.7"/><circle cx="32" cy="32" r="18"/></svg>',
+  Accesorios: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="28" width="36" height="28" rx="4"/><path d="M22 28 V20 a10 10 0 0 1 20 0 V28"/><path d="M32 39 V45"/></svg>'
+};
+const WA_ICONO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>';
+
+const pesos = n => new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 }).format(n);
+const linkWa = texto => `https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(texto)}`;
+const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const escapar = t => String(t).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// Datos del negocio en la página
+document.title = `${NEGOCIO.nombre} · Motos, repuestos y accesorios`;
+document.getElementById("marca").firstChild.textContent = NEGOCIO.nombre;
+document.getElementById("titulo-portada").textContent = NEGOCIO.nombre;
+document.getElementById("dato-direccion").textContent = NEGOCIO.direccion;
+document.getElementById("contacto-direccion").textContent = NEGOCIO.direccion;
+document.getElementById("dato-horario").textContent = NEGOCIO.horario;
+document.getElementById("dato-horario2").textContent = NEGOCIO.horario2;
+document.getElementById("contacto-telefono").textContent = NEGOCIO.telefonoVisible;
+const ig = document.getElementById("contacto-instagram");
+ig.textContent = NEGOCIO.instagramVisible; ig.href = NEGOCIO.instagram;
+document.getElementById("como-llegar").href = NEGOCIO.mapa;
+document.getElementById("credito").href = NEGOCIO.credito;
+document.getElementById("anio").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = linkWa(a.dataset.wa);
+  a.target = "_blank"; a.rel = "noopener";
+});
+
+// Catálogo
+const categorias = ["Todo", ...new Set(PRODUCTOS.map(p => p.categoria))];
+let categoriaActiva = "Todo";
+let busqueda = "";
+
+const chips = document.getElementById("chips");
+const grilla = document.getElementById("grilla");
+const buscar = document.getElementById("buscar");
+
+function dibujarChips() {
+  chips.innerHTML = categorias.map(c =>
+    `<button class="chip" type="button" aria-pressed="${c === categoriaActiva}" data-cat="${escapar(c)}">${escapar(c)}</button>`
+  ).join("");
+}
+
+function tarjeta(p) {
+  const foto = p.foto
+    ? `<img src="${escapar(p.foto)}" alt="${escapar(p.nombre)}" loading="lazy">`
+    : (ICONOS[p.categoria] || ICONOS.Accesorios);
+  const etiqueta = p.etiqueta
+    ? `<span class="etiqueta ${normalizar(p.etiqueta) === "oferta" ? "oferta" : ""}">${escapar(p.etiqueta)}</span>` : "";
+  const antes = p.antes ? `<span class="precio-anterior">${pesos(p.antes)}</span>` : "";
+  const cuotas = p.cuotas ? `<span class="cuotas">${p.cuotas} cuotas de ${pesos(Math.ceil(p.precio / p.cuotas))}</span>` : "";
+  const mensaje = `Hola! Vi en la web: ${p.nombre} (${pesos(p.precio)}). ¿Está disponible?`;
+  return `
+    <article class="producto">
+      <div class="foto">${etiqueta}${foto}</div>
+      <div class="info">
+        <h3>${escapar(p.nombre)}</h3>
+        <p class="detalle">${escapar(p.detalle || "")}</p>
+        <div class="precio-fila">
+          ${antes}
+          <span class="precio">${pesos(p.precio)}</span>
+          ${cuotas}
+        </div>
+        <a class="boton boton-wa" href="${linkWa(mensaje)}" target="_blank" rel="noopener">${WA_ICONO}Consultar</a>
+      </div>
+    </article>`;
+}
+
+function dibujarGrilla() {
+  const q = normalizar(busqueda.trim());
+  const lista = PRODUCTOS.filter(p =>
+    (categoriaActiva === "Todo" || p.categoria === categoriaActiva) &&
+    (!q || normalizar(`${p.nombre} ${p.detalle} ${p.categoria}`).includes(q))
+  );
+  if (!lista.length) {
+    grilla.innerHTML = `
+      <div class="vacio">
+        <p>No hay productos que coincidan con “${escapar(busqueda)}”${categoriaActiva !== "Todo" ? ` en ${escapar(categoriaActiva)}` : ""}. Probá con otra palabra o consultanos: puede que lo tengamos en el local.</p>
+        <button class="boton" type="button" id="ver-todo">Ver todo el catálogo</button>
+      </div>`;
+    document.getElementById("ver-todo").onclick = () => {
+      busqueda = ""; buscar.value = ""; categoriaActiva = "Todo";
+      dibujarChips(); dibujarGrilla();
+    };
+    return;
+  }
+  grilla.innerHTML = lista.map(tarjeta).join("");
+}
+
+chips.addEventListener("click", e => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  categoriaActiva = b.dataset.cat;
+  dibujarChips(); dibujarGrilla();
+});
+buscar.addEventListener("input", e => { busqueda = e.target.value; dibujarGrilla(); });
+
+dibujarChips();
+dibujarGrilla();
+</script>
+</body>
+</html>
